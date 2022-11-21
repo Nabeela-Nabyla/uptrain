@@ -1,0 +1,26 @@
+@use 'src/styles/vars';
+
+.warningMessage > p {
+  box-shadow: vars.$shadow-button;
+  text-shadow: 2px 2px 4px vars.$color-hover;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  width: fit-content;
+  margin:0 auto 1rem;
+  font-size: 1.2rem;
+  color: vars.$color-text;
+}
+
+.error {
+  background-color: vars.$color-alt-4-clear;
+}
+
+.OK,
+.Created {
+  background-color: vars.$color-alt-3-clear;
+}
+
+.Forbidden {
+  background-color: vars.$color-main-clear;
+}

@@ -1,0 +1,71 @@
+@use 'src/styles/vars';
+
+.home__popup {
+  background: vars.$color-back;
+  box-shadow: vars.$shadow-button;
+  border-radius: 1.5rem;
+  margin: auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+.popup__button {
+  display: flex;
+  justify-content: center;
+}
+
+
+/*  RADIO  */
+// .radio { 
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+/*  CHECKBOX  */
+// .checkbox,
+// .radio { 
+//   input { display: none; }
+//   margin-bottom: 1rem;
+  
+//   &__button {
+//     display: flex;
+//     align-items: center;
+
+//     label {
+//     box-shadow: vars.$shadow-button;
+// 		cursor: pointer;
+//     position: relative;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// 		border-radius: .5rem;
+// 		width: 1rem;
+// 		height: 1rem;
+//     padding: 0.8rem;
+//   }
+  
+//   & input:checked {
+//     & ~ label {
+//       box-shadow: vars.$shadow-toggle;
+//       background-color: vars.$color-main;
+//     }
+//   }
+// }
+// }
+
+/** === RESPONSIVE === **/
+
+/* === SMARTPHONE === */
+
+@media screen and (max-width:767px) {
+
+
+}
+
+/* === TABLET & DESKTOP === */
+
+@media screen and (min-width:768px) {
+  .home__popup {
+    width: 40%;
+  }
+}
