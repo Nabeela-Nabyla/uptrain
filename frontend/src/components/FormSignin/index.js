@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // == Import
 // npm
 import { useNavigate } from 'react-router-dom';
@@ -56,8 +57,11 @@ function FormSignin() {
           type="password"
           name="password"
           content="Mot de passe"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$"
           isRequired
+          legend
         />
+        <legend className="password--legend">Doit contenir au moins 6 caractères avec une majuscule, une minuscule, un chiffre et un caratère spécial.</legend>
         <FieldInput
           type="password"
           name="checkedPassword"
@@ -68,7 +72,7 @@ function FormSignin() {
       {checkedPassword !== undefined && checkedPassword === password && <WarningMessage type="OK" content="Vos deux mots de passe sont identiques." />}
       {checkedPassword !== undefined && checkedPassword !== password && <WarningMessage type="error" content="Vos deux mots de passe sont différents." />}
       <div className="popup__button">
-        <Btn type="submit" content="S'inscrire" />
+        <Btn type={checkedPassword !== undefined && checkedPassword === password ? 'submit' : 'button'} content="S'inscrire" />
       </div>
     </form>
   );

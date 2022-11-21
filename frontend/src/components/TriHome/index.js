@@ -16,9 +16,9 @@ import NavBar from '../NavBar';
 import Popup from '../Popup';
 import TrainingCalendar from './TrainingCalendar';
 import Loading from '../Loading';
-import './triHome.scss';
 import { togglePopup } from '../../actions/popup';
 import { connectUser } from '../../actions/user';
+import './triHome.scss';
 
 // == Composant
 function TriHome() {

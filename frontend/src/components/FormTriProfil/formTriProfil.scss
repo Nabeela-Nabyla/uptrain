@@ -1,11 +1,6 @@
 @use 'src/styles/vars';
 
 .triprofil {
-  &__fields {
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -13,17 +8,46 @@
   }
 }
 
-.left {
-  width: 25%;
-}
-
-.right {
-  width: 70%;
-}
-
 .form__buttons {
   width: 100%;
   margin-top: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+/** === RESPONSIVE === **/
+
+/* === SMARTPHONE === */
+
+@media screen and (max-width:767px) {
+  .triprofil {
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .btn {
+    font-size: 1.1rem;
+  }
+}
+
+/* === TABLET & DESKTOP === */
+
+@media screen and (min-width:768px) {
+  .triprofil {
+    &__fields {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .left {
+    width: 25%;
+  }
+  
+  .right {
+    width: 70%;
+  }
 }

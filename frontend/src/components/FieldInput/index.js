@@ -17,6 +17,7 @@ function FieldInput({
   placeholder,
   accept,
   isRequired,
+  pattern,
 }) {
   const dispatch = useDispatch();
   const inputChangeValue = useSelector((state) => state[name]);
@@ -49,6 +50,7 @@ function FieldInput({
         required={isRequired}
         value={value === '' ? inputChangeValue : value}
         onChange={handleChange}
+        pattern={pattern}
       />
     </div>
   );
@@ -67,7 +69,10 @@ FieldInput.propTypes = {
   ]),
   accept: PropTypesLib.string,
   isRequired: PropTypesLib.bool,
-  pattern: PropTypesLib.string,
+  pattern: PropTypesLib.oneOfType([
+    PropTypesLib.string,
+    PropTypesLib.bool,
+  ]),
 };
 
 FieldInput.defaultProps = {
@@ -75,7 +80,7 @@ FieldInput.defaultProps = {
   value: '',
   accept: '',
   isRequired: false,
-  pattern: '',
+  pattern: false,
 };
 
 // == Export

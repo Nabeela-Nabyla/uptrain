@@ -14,44 +14,16 @@
   justify-content: center;
 }
 
+.password--legend {
+  font-size: 0.8rem;
+  padding-left: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
+}
 
-/*  RADIO  */
-// .radio { 
-//   display: flex;
-//   justify-content: space-evenly;
-// }
-
-/*  CHECKBOX  */
-// .checkbox,
-// .radio { 
-//   input { display: none; }
-//   margin-bottom: 1rem;
-  
-//   &__button {
-//     display: flex;
-//     align-items: center;
-
-//     label {
-//     box-shadow: vars.$shadow-button;
-// 		cursor: pointer;
-//     position: relative;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// 		border-radius: .5rem;
-// 		width: 1rem;
-// 		height: 1rem;
-//     padding: 0.8rem;
-//   }
-  
-//   & input:checked {
-//     & ~ label {
-//       box-shadow: vars.$shadow-toggle;
-//       background-color: vars.$color-main;
-//     }
-//   }
-// }
-// }
+.home__popup .field__input:has(input[name="password"]) {
+  margin-bottom: 0;
+}
 
 /** === RESPONSIVE === **/
 

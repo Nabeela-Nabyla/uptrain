@@ -23,6 +23,7 @@ import trainingLabel from '../../data/trainingLabel';
 import Author from '../Author';
 import Loading from '../Loading';
 import './training.scss';
+import { getWarningMessage, timeoutWarningMessage } from '../../actions';
 
 // == Composant
 function Training() {
@@ -58,6 +59,12 @@ function Training() {
     dispatch(togglePopup('isTraining', isTraining));
     dispatch(formTraining('isPatch', isPatch));
     dispatch(editTraining());
+  };
+
+  const handleClickEdit = () => {
+    dispatch(getWarningMessage('Forbidden', 'Cet entrainement est déjà effectué, vous ne pouvez pas le modifier.'));
+    handleClickClose();
+    setTimeout(() => dispatch(timeoutWarningMessage()), 5000);
   };
 
   const options = {
@@ -101,7 +108,7 @@ function Training() {
                         icons={false}
                         name={key}
                         id={key}
-                        defaultChecked={training[key]}
+                        checked={training[key]}
                       />
                       <p className="toggle__content">{currentLabel[0].content}</p>
                     </label>
@@ -111,14 +118,25 @@ function Training() {
                 if (key === 'isValidated') {
                   return (
                     <label htmlFor={key} className="toggle">
-                      <Toggle
-                        key={key}
-                        icons={false}
-                        name={key}
-                        id={key}
-                        defaultChecked={training[key]}
-                        onChange={handleTrainingCheck}
-                      />
+                      {training[key] && (
+                        <Toggle
+                          key={key}
+                          icons={false}
+                          name={key}
+                          id={key}
+                          checked={training[key]}
+                        />
+                      ) }
+                      {!training[key] && (
+                        <Toggle
+                          key={key}
+                          icons={false}
+                          name={key}
+                          id={key}
+                          defaultChecked={training[key]}
+                          onChange={handleTrainingCheck}
+                        />
+                      ) }
                       <p className="toggle__content">{currentLabel[0].content}</p>
                     </label>
                   );
@@ -142,7 +160,7 @@ function Training() {
           <Author />
           <div className="popup__buttons">
             <Btn type="button" content="Icone supprimer" src={del} onClick={handleTrainingDelete} />
-            <Btn type="button" content="Icone modifier" src={modify} onClick={handleTrainingPatch} />
+            <Btn type="button" content="Icone modifier" src={modify} onClick={training.isValidated ? handleClickEdit : handleTrainingPatch} />
           </div>
         </>
       )}

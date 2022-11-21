@@ -60,16 +60,11 @@ class TriathleteController extends AbstractController
      */
     public function getTriathleteItem(Triathlete $triathlete): JsonResponse
     {
-        
-        $json = $this->json(
+        return $this->json(
             $triathlete,
             Response::HTTP_OK,
             [],
             ['groups' => 'app_api_triathletes_get_item']);
-            dump($json);
-        $date = json_encode(json_decode($json)->date_birth);
-        //dump($date);
-        return $json;
     }
 
     /**

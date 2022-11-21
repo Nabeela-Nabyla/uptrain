@@ -12,6 +12,7 @@ import './yesNoPopup.scss';
 import { deleteTraining } from '../../actions/trainings';
 import { deleteInfosProfil } from '../../actions/profil';
 import { logout } from '../../actions/user';
+import { getWarningMessage, timeoutWarningMessage } from '../../actions';
 
 // == Composant
 function YesNoPopup({ title, answer, textButton }) {
@@ -39,6 +40,8 @@ function YesNoPopup({ title, answer, textButton }) {
     if (isLogout) {
       dispatch(logout());
       navigate('/');
+      dispatch(getWarningMessage('OK', 'Vous êtes déconnecté'));
+      setTimeout(() => dispatch(timeoutWarningMessage()), 5000);
     }
 
     handleClickClose();

@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -119,7 +118,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->reviews = new ArrayCollection();
         $this->createdAt = new DateTimeImmutable();
         $this->picture = 'src/assets/avatar/user.svg';
-        $this->date_birth = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -247,9 +245,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDateBirth(): ?\DateTimeInterface
+    public function getDateBirth()
     {
-        return $this->date_birth;
+        $date = $this->date_birth;
+        if (null !== $date) {
+            return date_format($date, 'd-m-Y');
+        }
     }
 
     public function setDateBirth(?\DateTimeInterface $date_birth): self

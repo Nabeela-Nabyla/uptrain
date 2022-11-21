@@ -6,7 +6,6 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -39,17 +38,10 @@ class UserType extends AbstractType
                     'class' => 'text-dark',
                 ]]
             )
-            ////
-            ->add('date_birth', DateType::class, [
+            ->add('date_birth', null, [
                 'label' => 'Date de naissance :',
                 'widget' => 'single_text',
-                'input'  => 'datetime_immutable'
             ])
-            /////
-            // ->add('date_birth', null, [
-            //     'label' => 'Date de naissance :',
-            //     'widget' => 'single_text',
-            // ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description :',
             ])

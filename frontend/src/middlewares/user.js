@@ -59,8 +59,6 @@ const user = (store) => (next) => (action) => {
 
       axios.post(`${url}register`, datas)
         .then((response) => {
-          console.log(response);
-          console.log(response.data);
           store.dispatch(connectUser(
             response.data.firstname,
             response.data.logged,

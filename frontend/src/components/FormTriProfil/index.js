@@ -19,6 +19,7 @@ function FormTriProfil() {
   const infosProfil = useSelector((state) => state.profil.infosProfil);
   const isFormProfil = useSelector((state) => state.popup.isFormProfil);
   const dateBirth = useSelector((state) => state.profil.infosProfil.date_birth);
+  console.log(infosProfil);
 
   const handleCancel = () => {
     dispatch(togglePopup('isFormProfil', isFormProfil));
@@ -29,7 +30,7 @@ function FormTriProfil() {
     handleCancel();
   };
 
-  const date = dateBirth !== undefined ? dateYYYYMMDD(dateBirth) : '';
+  const date = dateBirth !== null ? dateYYYYMMDD(dateBirth) : '';
   return (
     <form action="" method="post" className="edit__triprofil">
       <NavBar />
@@ -61,7 +62,7 @@ function FormTriProfil() {
             type="text"
             name="city"
             content="Ville"
-            value={infosProfil.city}
+            value={infosProfil.city === null ? '' : infosProfil.city}
             isRequired
           />
           <FieldSelect
@@ -84,14 +85,14 @@ function FormTriProfil() {
             type="number"
             name="size"
             content="Taille"
-            value={infosProfil.size}
+            value={infosProfil.size === null ? '' : infosProfil.size}
             isRequired
           />
           <FieldInput
             type="number"
             name="weight"
             content="Masse"
-            value={infosProfil.weight}
+            value={infosProfil.weight === null ? '' : infosProfil.weight}
             isRequired
           />
         </div>
@@ -100,13 +101,13 @@ function FormTriProfil() {
             name="description"
             content="Description"
             maxLength="1200"
-            value={infosProfil.description}
+            value={infosProfil.description === null ? '' : infosProfil.description}
           />
           <FieldTextArea
             name="palmares"
             content="Palmarès"
             maxLength="1200"
-            value={infosProfil.palmares}
+            value={infosProfil.palmares === null ? '' : infosProfil.palmares}
           />
           <div className="form__buttons">
             <Link to="/triathlete/profil">

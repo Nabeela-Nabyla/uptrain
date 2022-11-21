@@ -10,9 +10,6 @@ function ProfilDescription({ titre, content }) {
     <div className="profil__description">
       <h2 className="description__title">{titre}</h2>
       <p className="description__info">{content}</p>
-      <div className="description__link">
-        <a href="#" className="link">Voir plus</a>
-      </div>
     </div>
   );
 }

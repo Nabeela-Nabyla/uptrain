@@ -2,12 +2,12 @@
 
 .login {
   &__popup {
-  background: vars.$color-back;
-  box-shadow: vars.$shadow-button;
-  border-radius: 1.5rem;
-  margin: auto;
-  padding: 1rem;
-  width: 100%;
+    background: vars.$color-back;
+    box-shadow: vars.$shadow-button;
+    border-radius: 1.5rem;
+    margin: auto;
+    padding: 1rem;
+    width: 100%;
   }
 
   &__button {
@@ -33,7 +33,7 @@
 /* === SMARTPHONE === */
 
 @media screen and (max-width:767px) {
-
+  
 }
 
 /* === TABLET & DESKTOP === */

@@ -43,7 +43,6 @@ const trainings = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
           store.dispatch(getCurrentTraining(response.data));
         })
         .catch((error) => {
@@ -57,7 +56,6 @@ const trainings = (store) => (next) => (action) => {
       const { user: { token } } = store.getState();
       const { trainings: { currentTraining } } = store.getState();
       const { user: { triathleteId } } = store.getState();
-      // console.log(`${url}trainings`);
       const headers = {
         headers: { Authorization: `Bearer ${token}` },
       };
@@ -83,13 +81,11 @@ const trainings = (store) => (next) => (action) => {
         headers,
       )
         .then((response) => {
-          console.log(response);
           store.dispatch(getDatas());
           store.dispatch(getWarningMessage(response.statusText, response.data.message));
           setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         })
         .catch((error) => {
-          console.log(error.response.data);
           store.dispatch(getWarningMessage(error.response.statusText, error.response.data.message));
           setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         });
@@ -101,7 +97,6 @@ const trainings = (store) => (next) => (action) => {
       const { user: { token } } = store.getState();
       const { trainings: { currentTraining } } = store.getState();
 
-      // console.log(`${url}trainings`);
       const headers = {
         headers: { Authorization: `Bearer ${token}` },
       };
@@ -126,13 +121,11 @@ const trainings = (store) => (next) => (action) => {
         headers,
       )
         .then((response) => {
-          console.log(response.data);
           store.dispatch(getDatas());
           store.dispatch(getWarningMessage(response.statusText, response.data.message));
           setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         })
         .catch((error) => {
-          console.log(error.response.data);
           store.dispatch(getWarningMessage(error.response.statusText, error.response.data.message));
           setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         });
@@ -180,17 +173,12 @@ const trainings = (store) => (next) => (action) => {
         headers,
       )
         .then((response) => {
-          // console.log(response);
-          // console.log(response.data);
-          // console.log(response.statusText);
-          // console.log(response.message);
           store.dispatch(getDatas());
           store.dispatch(getWarningMessage(response.statusText, response.data.message));
           store.dispatch(closeTraining());
           setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         })
         .catch((error) => {
-          console.log(error.response);
           store.dispatch(getWarningMessage(error.response.statusText, error.response.data.message));
           store.dispatch(closeTraining());
           setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);

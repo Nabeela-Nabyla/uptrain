@@ -8,6 +8,8 @@ import TriProfil from '../TriProfil';
 import Training from '../Training';
 import YesNoPopup from '../YesNoPopup';
 import './upTrain.scss';
+import Error from '../Error';
+import Legals from '../Legals';
 
 // == Composant
 function UpTrain() {
@@ -16,6 +18,7 @@ function UpTrain() {
     <div className="uptrain dark">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/mentions-legales" element={<Legals />} />
         <Route path="/triathlete" element={<TriHome />} />
         <Route path="/triathlete/profil" element={<TriProfil />} />
         <Route path="/triathlete/profil/modifier" element={<FormTriProfil />} />

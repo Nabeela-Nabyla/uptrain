@@ -1,5 +1,7 @@
 import axios from 'axios';
 import url from 'src/url/';
+import { getWarningMessage, timeoutWarningMessage } from '../actions';
+
 import {
   getInfosProfil,
   DELETE_INFOS_PROFIL,
@@ -10,7 +12,6 @@ import { GET_DATAS } from '../actions/trainings';
 const profil = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_DATAS: {
-      // console.log('on est dans les datas');
       const { user: { triathleteId, token } } = store.getState();
 
       const config = {
@@ -22,7 +23,6 @@ const profil = (store) => (next) => (action) => {
       axios.get(`${url}triathletes/${triathleteId}`, config)
 
         .then((response) => {
-          console.log(response.data);
           store.dispatch(getInfosProfil(
             response.data.id,
             response.data.palmares,
@@ -50,7 +50,6 @@ const profil = (store) => (next) => (action) => {
     }
 
     case EDIT_INFOS_PROFIL: {
-      // console.log('on va edit');
       const { user: { token } } = store.getState();
       const { profil: { infosProfil } } = store.getState();
 
@@ -79,15 +78,14 @@ const profil = (store) => (next) => (action) => {
         collaborations: [],
       };
 
-      console.log(bodyParameter);
-
       axios.patch(`${url}triathletes/${infosProfil.idTri}`, bodyParameter, config)
         .then((response) => {
-          console.log(response.data);
-          // window.location.href = '/';
+          store.dispatch(getWarningMessage(response.statusText, response.data.message));
+          setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         })
         .catch((error) => {
-          console.log(error);
+          store.dispatch(getWarningMessage(error.response.statusText, error.response.data.message));
+          setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         });
 
       next(action);
@@ -95,7 +93,6 @@ const profil = (store) => (next) => (action) => {
     }
 
     case DELETE_INFOS_PROFIL: {
-      // console.log('on veut effacer');
       const { user: { token } } = store.getState();
       const { profil: { infosProfil } } = store.getState();
 
@@ -107,12 +104,13 @@ const profil = (store) => (next) => (action) => {
 
       axios.delete(`${url}triathletes/${infosProfil.idTri}`, config)
         .then((response) => {
-          console.log(response.data);
-          alert('Le profil du triathlète a été supprimé.');
+          store.dispatch(getWarningMessage(response.statusText, response.data.message));
+          setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
           window.location.href = '/';
         })
         .catch((error) => {
-          console.log(error.response.data);
+          store.dispatch(getWarningMessage(error.response.statusText, error.response.data.message));
+          setTimeout(() => store.dispatch(timeoutWarningMessage()), 5000);
         });
 
       next(action);

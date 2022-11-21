@@ -33,6 +33,10 @@
   background-color: vars.$color-alt-3-clear;
 }
 
+.tri {
+  background-color: vars.$color-main-clear;
+}
+
 .session {
   &__title {
     width: fit-content;

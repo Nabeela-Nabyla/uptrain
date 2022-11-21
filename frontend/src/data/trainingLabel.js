@@ -37,6 +37,7 @@ export default [
       { value: 'Natation', label: 'Natation' },
       { value: 'Cyclisme', label: 'Cyclisme' },
       { value: 'Course à pied', label: 'Course à pied' },
+      { value: 'Triathlon', label: 'Triathlon' },
     ],
     addTrainng: true,
     editTraining: true,
